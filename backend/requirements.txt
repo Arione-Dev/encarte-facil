@@ -1,0 +1,11 @@
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+sqlalchemy>=2.0.28
+pydantic>=2.6.4
+pydantic-settings>=2.2.1
+python-multipart>=0.0.9
+aiofiles>=23.2.1
+pillow>=10.2.0
+# Driver opcional para PostgreSQL (descomente ou use quando conectar ao Postgres):
+# psycopg2-binary>=2.9.9
+

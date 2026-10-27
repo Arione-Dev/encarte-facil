@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Fontes de alto impacto promocional para varejo */
+.font-bebas {
+  font-family: 'Bebas Neue', sans-serif;
+}
+.font-oswald {
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Efeito Splash / Estrela de Preço do Varejo */
+.price-tag-splash {
+  background: radial-gradient(circle, #fff200 0%, #ffbb00 100%);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.price-text-shadow {
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.4);
+}
+
+.title-3d-shadow {
+  text-shadow: 3px 3px 0px #000, 5px 5px 0px rgba(0,0,0,0.2);
+}
+
+/* Estilos de impressão */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
