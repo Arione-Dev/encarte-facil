@@ -23,11 +23,77 @@
 }
 
 .price-text-shadow {
-  text-shadow: 2px 2px 0px rgba(0,0,0,0.4);
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.6);
 }
 
 .title-3d-shadow {
-  text-shadow: 3px 3px 0px #000, 5px 5px 0px rgba(0,0,0,0.2);
+  text-shadow: 
+    2px 2px 0px #800, 
+    4px 4px 0px #400,
+    6px 6px 0px rgba(0,0,0,0.4);
+}
+
+.title-3d-yellow {
+  text-shadow: 
+    2px 2px 0px #b26a00, 
+    4px 4px 0px #5c3700,
+    6px 6px 0px rgba(0,0,0,0.5);
+}
+
+.text-stroke-black {
+  -webkit-text-stroke: 1.5px black;
+}
+
+/* Faixa Zebrada de Alerta Promocional (Amarelo e Preto) */
+.caution-stripes {
+  background: repeating-linear-gradient(
+    45deg,
+    #ffc107,
+    #ffc107 15px,
+    #111 15px,
+    #111 30px
+  );
+}
+
+/* Faixa Zebrada Vermelho e Amarelo (Impacto Varejo) */
+.retail-stripes {
+  background: repeating-linear-gradient(
+    45deg,
+    #d32f2f,
+    #d32f2f 12px,
+    #ffc107 12px,
+    #ffc107 24px
+  );
+}
+
+/* Fita / Ribbon 3D com pontas dobradas */
+.ribbon-banner {
+  position: relative;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.35);
+}
+.ribbon-banner::before,
+.ribbon-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  border-top: 8px solid #700;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+.ribbon-banner::before {
+  left: 0;
+}
+.ribbon-banner::after {
+  right: 0;
+}
+
+/* Selo Circular Serrilhado */
+.stamp-starburst {
+  clip-path: polygon(
+    50% 0%, 63% 12%, 81% 6%, 86% 24%, 100% 28%, 95% 46%, 100% 64%, 87% 73%,
+    84% 91%, 67% 89%, 52% 100%, 36% 89%, 18% 92%, 14% 74%, 0% 67%, 5% 49%,
+    0% 31%, 15% 25%, 18% 7%, 35% 11%
+  );
 }
 
 /* Estilos de impressão */
@@ -40,4 +106,3 @@
     display: none !important;
   }
 }
-

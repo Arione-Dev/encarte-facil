@@ -11,6 +11,42 @@ import { api } from './services/api';
 
 const DEFAULT_TEMPLATES = [
   {
+    id: "campanha-explosao-atacado",
+    name: "💥 Explosão de Ofertas do Atacado (Mega Campanha)",
+    category: "Campanhas de Impacto",
+    format: "A4 / Tabloide",
+    aspect_ratio: "210x297",
+    description: "Cabeçalho explosivo em 3D com chamas, estrelas de desconto e faixas de 'Preço Baixo de Verdade'. Máxima conversão visual.",
+    badge: "CAMPANHA PREMIUM"
+  },
+  {
+    id: "campanha-aniversario-atacadao",
+    name: "🎉 Aniversário do Atacado (Festa de Preços Baixos)",
+    category: "Campanhas de Impacto",
+    format: "A4 / Tabloide",
+    aspect_ratio: "210x297",
+    description: "Visual comemorativo festivo com balões 3D dourados e vermelhos, confetes e selos de 'O ANIVERSÁRIO É NOSSO, O PREÇO BAIXO É SEU!'.",
+    badge: "FESTIVAL / ANIVERSÁRIO"
+  },
+  {
+    id: "campanha-mega-fim-de-semana",
+    name: "⚡ Mega Fim de Semana / Sextou do Atacarejo",
+    category: "Campanhas de Impacto",
+    format: "A4 / Tabloide",
+    aspect_ratio: "210x297",
+    description: "Cabeçalho com raios elétricos e selo de urgência 'SÓ NESTA SEXTA, SÁBADO E DOMINGO!'. Excelente para queimas de fim de semana.",
+    badge: "URGÊNCIA / FIM DE SEMANA"
+  },
+  {
+    id: "campanha-operacao-combate",
+    name: "🚨 Operação Preço Baixo / Derruba Preços",
+    category: "Campanhas de Impacto",
+    format: "A4 / Tabloide",
+    aspect_ratio: "210x297",
+    description: "Estilo agressivo com faixas zebradas de perigo, carimbos 'BAIXOU!' e 'DIRETO DA INDÚSTRIA'. Destaque gigante para preços de fardo.",
+    badge: "COMBATE À INFLAÇÃO"
+  },
+  {
     id: "atacarejo-a4",
     name: "Atacarejo Tradicional (A4 / Tabloide)",
     category: "Impressão e Tabloide",
