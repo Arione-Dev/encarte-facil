@@ -61,6 +61,54 @@ export default function FlyerCanvas({ flyerData, marketData, zoom = 1, canvasRef
   // Estilização temática por template
   const getThemeStyles = () => {
     switch (template_id) {
+      case 'campanha-explosao-atacado':
+        return {
+          type: 'explosao',
+          bg: 'bg-gradient-to-b from-amber-50 via-white to-red-50',
+          headerBg: 'bg-gradient-to-r from-red-700 via-amber-600 to-red-800 border-b-8 border-yellow-400',
+          cardBg: 'bg-white text-stone-900 shadow-2xl border-2 border-red-500/80',
+          sectorBg: 'bg-gradient-to-r from-red-700 via-amber-600 to-red-700 text-yellow-300 border-l-8 border-yellow-400 shadow-md',
+          priceBg: 'bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-300 text-stone-950 border-2 border-red-600',
+          textColor: 'text-stone-800',
+          nameColor: 'text-stone-950',
+          badgeText: '💥 PREÇO DE CUSTO'
+        };
+      case 'campanha-aniversario-atacadao':
+        return {
+          type: 'aniversario',
+          bg: 'bg-gradient-to-b from-rose-50 via-white to-amber-50',
+          headerBg: 'bg-gradient-to-r from-red-900 via-red-700 to-rose-950 border-b-8 border-yellow-400',
+          cardBg: 'bg-white text-stone-900 shadow-xl border-2 border-amber-400',
+          sectorBg: 'bg-gradient-to-r from-red-800 to-amber-700 text-amber-200 border-l-8 border-amber-300 shadow-md',
+          priceBg: 'bg-gradient-to-r from-amber-400 to-yellow-300 text-stone-950 border-2 border-red-700',
+          textColor: 'text-stone-800',
+          nameColor: 'text-stone-950',
+          badgeText: '🎂 OFERTA FESTA'
+        };
+      case 'campanha-mega-fim-de-semana':
+        return {
+          type: 'fim-de-semana',
+          bg: 'bg-gradient-to-b from-blue-50 via-white to-amber-50',
+          headerBg: 'bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-950 border-b-8 border-yellow-400',
+          cardBg: 'bg-white text-stone-900 shadow-xl border-2 border-blue-600',
+          sectorBg: 'bg-gradient-to-r from-blue-800 via-blue-700 to-indigo-800 text-yellow-300 border-l-8 border-yellow-400 shadow-md',
+          priceBg: 'bg-gradient-to-r from-yellow-400 to-amber-400 text-stone-950 border-2 border-blue-900',
+          textColor: 'text-stone-800',
+          nameColor: 'text-stone-950',
+          badgeText: '⚡ SEXTOU ATACADO'
+        };
+      case 'campanha-operacao-combate':
+        return {
+          type: 'combate',
+          bg: 'bg-gradient-to-b from-stone-100 via-white to-stone-200',
+          headerBg: 'bg-stone-950 border-b-8 border-yellow-400 text-yellow-400',
+          cardBg: 'bg-white text-stone-900 shadow-2xl border-2 border-black',
+          sectorBg: 'bg-black text-yellow-400 border-l-8 border-red-600 shadow-md',
+          priceBg: 'bg-red-600 text-white border-2 border-black',
+          textColor: 'text-stone-900',
+          nameColor: 'text-black font-black',
+          badgeText: '🚨 BAIXOU GERAL'
+        };
       case 'acougue-carnes':
         return {
           bg: 'bg-gradient-to-b from-stone-950 via-red-950 to-stone-900',
@@ -173,45 +221,118 @@ export default function FlyerCanvas({ flyerData, marketData, zoom = 1, canvasRef
             fontFamily: "'Montserrat', sans-serif"
           }}
         >
-        {/* ===================== CABEÇALHO DO ENCARTE ===================== */}
-        <header className={`${theme.headerBg} p-4 text-center text-white relative shadow-md`}>
+        {/* ===================== CABEÇALHO DO ENCARTE DE ALTO IMPACTO ===================== */}
+        <header className={`${theme.headerBg} p-4 text-center text-white relative shadow-xl overflow-hidden`}>
+          {/* Efeito Especial de Campanha: Faixas Zebradas ou Efeitos de Topo */}
+          {theme.type === 'combate' && (
+            <div className="caution-stripes h-2.5 w-full -mt-4 mb-2 shadow-inner"></div>
+          )}
+          {theme.type === 'explosao' && (
+            <div className="retail-stripes h-2.5 w-full -mt-4 mb-2 shadow-inner"></div>
+          )}
+
           {/* Faixa superior com Nome do Mercado e Data */}
-          <div className="flex items-center justify-between border-b border-white/20 pb-2 mb-2">
+          <div className="flex items-center justify-between border-b border-white/20 pb-2 mb-2 relative z-10">
             <div className="flex items-center gap-3">
               {market.logo_url ? (
-                <img src={market.logo_url} alt="Logo" className="h-10 object-contain rounded" />
+                <img src={market.logo_url} alt="Logo" className="h-11 object-contain rounded drop-shadow" />
               ) : (
-                <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center font-bebas text-2xl text-red-700 font-bold shadow">
+                <div className="w-11 h-11 bg-yellow-400 rounded-full flex items-center justify-center font-bebas text-3xl text-red-700 font-black shadow-lg border-2 border-white">
                   %
                 </div>
               )}
               <div className="text-left">
-                <h1 className="font-bebas text-2xl tracking-wider leading-none text-yellow-300 drop-shadow">
+                <h1 className="font-bebas text-2xl sm:text-3xl tracking-wider leading-none text-yellow-300 drop-shadow">
                   {market.name}
                 </h1>
-                <p className="text-[11px] opacity-90 font-medium tracking-tight">
+                <p className="text-[11px] opacity-95 font-semibold tracking-tight text-white drop-shadow">
                   {market.slogan}
                 </p>
               </div>
             </div>
 
-            {/* Selo de Validade */}
-            <div className="bg-yellow-400 text-stone-900 font-bold px-3 py-1 rounded text-xs uppercase shadow font-bebas tracking-wide">
-              VÁLIDO: {valid_from} ATÉ {valid_until}
+            {/* Selos de Campanha e Validade no Topo */}
+            <div className="flex items-center gap-2">
+              {theme.type === 'explosao' && (
+                <span className="bg-red-600 border border-yellow-300 text-yellow-300 font-bebas text-xs px-2.5 py-1 rounded shadow-md uppercase tracking-wider animate-pulse">
+                  💣 PREÇO DE CUSTO
+                </span>
+              )}
+              {theme.type === 'aniversario' && (
+                <span className="bg-yellow-400 text-red-900 font-bebas text-xs px-2.5 py-1 rounded shadow-md uppercase tracking-wider">
+                  🎈 FESTA DE OFERTAS
+                </span>
+              )}
+              {theme.type === 'fim-de-semana' && (
+                <span className="bg-yellow-400 text-blue-950 font-bebas text-xs px-2.5 py-1 rounded shadow-md uppercase tracking-wider">
+                  ⚡ SÓ ESTE FIM DE SEMANA
+                </span>
+              )}
+              {theme.type === 'combate' && (
+                <span className="bg-yellow-400 text-stone-950 font-bebas text-xs px-2.5 py-1 rounded shadow-md uppercase tracking-wider -rotate-2">
+                  🚨 BAIXOU O PREÇO
+                </span>
+              )}
+
+              <div className="bg-yellow-400 text-stone-950 font-black px-3.5 py-1.5 rounded text-xs uppercase shadow-lg font-bebas tracking-wide border border-yellow-200">
+                VÁLIDO: {valid_from} ATÉ {valid_until}
+              </div>
             </div>
           </div>
 
-          {/* Faixa Principal de Título */}
-          <div className="py-2">
-            <h2 className="font-bebas text-4xl sm:text-5xl uppercase tracking-wider title-3d-shadow text-yellow-300">
+          {/* Faixa Principal de Título de Campanha com Estilo 3D e Impacto Comercial */}
+          <div className="py-2.5 relative z-10">
+            {theme.type === 'aniversario' && (
+              <div className="text-xs uppercase font-bold tracking-widest text-yellow-300 mb-1 flex items-center justify-center gap-2">
+                <span>🎉</span>
+                <span>GRANDE FESTA DE ANIVERSÁRIO DO ATACADÃO</span>
+                <span>🎉</span>
+              </div>
+            )}
+            {theme.type === 'explosao' && (
+              <div className="text-xs uppercase font-black tracking-widest text-yellow-300 mb-1 flex items-center justify-center gap-2">
+                <span>🔥</span>
+                <span>OFERTAS ARRASADORAS • ECONOMIA BRUTA EM FARDO E CAIXA</span>
+                <span>🔥</span>
+              </div>
+            )}
+            {theme.type === 'fim-de-semana' && (
+              <div className="text-xs uppercase font-black tracking-widest text-yellow-300 mb-1 flex items-center justify-center gap-2">
+                <span>⚡</span>
+                <span>SEXTOU NO ATACADO • OFERTAS IMBATÍVEIS PARA O SEU FIM DE SEMANA</span>
+                <span>⚡</span>
+              </div>
+            )}
+            {theme.type === 'combate' && (
+              <div className="text-xs uppercase font-black tracking-widest text-yellow-300 mb-1 flex items-center justify-center gap-2">
+                <span>🚨</span>
+                <span>OPERAÇÃO DERRUBA PREÇO • DIRETO DA INDÚSTRIA SEM INTERMEDIÁRIO</span>
+                <span>🚨</span>
+              </div>
+            )}
+
+            {/* Título Principal 3D */}
+            <h2 className="font-bebas text-5xl sm:text-6xl uppercase tracking-wider title-3d-yellow text-yellow-300 drop-shadow-2xl">
               {title}
             </h2>
+
+            {/* Subtítulo em Faixa de Destaque */}
             {subtitle && (
-              <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest bg-black/30 inline-block px-4 py-0.5 rounded-full mt-1">
-                ⭐ {subtitle} ⭐
-              </p>
+              <div className="mt-1">
+                <span className="bg-black/40 border border-yellow-400/40 text-white font-bold text-xs sm:text-sm uppercase tracking-widest inline-block px-5 py-1 rounded-full shadow-inner">
+                  ⭐ {subtitle} ⭐
+                </span>
+              </div>
             )}
           </div>
+
+          {/* Faixa Inferior de Urgência de Campanha */}
+          {theme.type === 'combate' && (
+            <div className="caution-stripes h-2.5 w-full mt-2 -mb-4 shadow-inner"></div>
+          )}
+          {theme.type === 'explosao' && (
+            <div className="retail-stripes h-2.5 w-full mt-2 -mb-4 shadow-inner"></div>
+          )}
         </header>
 
         {/* ===================== CORPO DO ENCARTE (PRODUTOS) ===================== */}
@@ -286,6 +407,12 @@ export default function FlyerCanvas({ flyerData, marketData, zoom = 1, canvasRef
                         key={pIdx}
                         className={`${theme.cardBg} rounded-lg p-2.5 flex flex-col justify-between relative group hover:scale-[1.01] transition-transform`}
                       >
+                        {/* Selo Promocional do Card */}
+                        {theme.badgeText && (
+                          <div className="absolute -top-2 -right-1 bg-gradient-to-r from-red-600 to-amber-600 text-yellow-300 font-bebas text-[10px] px-2 py-0.5 rounded shadow border border-yellow-300 z-10 uppercase tracking-tight">
+                            {theme.badgeText}
+                          </div>
+                        )}
                         {/* Imagem do Produto */}
                         <div className="h-28 w-full flex items-center justify-center p-1 bg-white/40 rounded mb-1.5 overflow-hidden">
                           {product.image_url ? (
@@ -331,14 +458,19 @@ export default function FlyerCanvas({ flyerData, marketData, zoom = 1, canvasRef
 
                           {/* Preço de Atacado (Fardo/Caixa) */}
                           {product.wholesale_price ? (
-                            <div className="bg-red-700 text-yellow-300 text-[9px] font-bold text-center py-0.5 px-1 rounded mt-1 uppercase tracking-tight shadow-sm">
-                              NO ATACADO ({product.wholesale_min_qty || 3}+ un):
-                              <span className="text-white ml-0.5 font-black text-[10px]">
-                                R$ {product.wholesale_price.toFixed(2)}
+                            <div className="bg-red-700 text-yellow-300 text-[9px] font-bold py-1 px-1.5 rounded mt-1 uppercase tracking-tight shadow-sm flex items-center justify-between border border-red-800">
+                              <span className="bg-yellow-400 text-stone-950 font-black px-1 rounded text-[8px]">
+                                ATACADO
+                              </span>
+                              <span className="text-[9px]">
+                                {product.wholesale_min_qty || 3}+ un:
+                                <strong className="text-white ml-0.5 text-[11px] font-black">
+                                  R$ {product.wholesale_price.toFixed(2)}
+                                </strong>
                               </span>
                             </div>
                           ) : (
-                            <div className="h-4"></div>
+                            <div className="h-5"></div>
                           )}
                         </div>
                       </div>

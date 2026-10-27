@@ -5,6 +5,58 @@ router = APIRouter(prefix="/templates", tags=["Modelos de Encarte"])
 
 TEMPLATES_CATALOG: List[Dict[str, Any]] = [
     {
+        "id": "campanha-explosao-atacado",
+        "name": "💥 Explosão de Ofertas do Atacado (Mega Campanha)",
+        "category": "Campanhas de Impacto",
+        "format": "A4 / Tabloide",
+        "aspect_ratio": "210x297",
+        "description": "Cabeçalho explosivo em 3D com chamas, estrelas de desconto e faixas de 'Preço Baixo de Verdade'. Máxima conversão visual.",
+        "badge": "CAMPANHA PREMIUM",
+        "default_sectors": ["Mercearia Pesada", "Bebidas & Packs", "Limpeza & Fardos"],
+        "max_products": 12,
+        "primary_color": "#D50000",
+        "secondary_color": "#FFD600"
+    },
+    {
+        "id": "campanha-aniversario-atacadao",
+        "name": "🎉 Aniversário do Atacado (Festa de Preços Baixos)",
+        "category": "Campanhas de Impacto",
+        "format": "A4 / Tabloide",
+        "aspect_ratio": "210x297",
+        "description": "Visual comemorativo festivo com balões 3D dourados e vermelhos, confetes e selos de 'O ANIVERSÁRIO É NOSSO, O PREÇO BAIXO É SEU!'.",
+        "badge": "FESTIVAL / ANIVERSÁRIO",
+        "default_sectors": ["Ofertas da Festa", "Bebidas & Brinde", "Carnes & Churrasco"],
+        "max_products": 12,
+        "primary_color": "#B71C1C",
+        "secondary_color": "#FFC107"
+    },
+    {
+        "id": "campanha-mega-fim-de-semana",
+        "name": "⚡ Mega Fim de Semana / Sextou do Atacarejo",
+        "category": "Campanhas de Impacto",
+        "format": "A4 / Tabloide",
+        "aspect_ratio": "210x297",
+        "description": "Cabeçalho com raios elétricos e selo de urgência 'SÓ NESTA SEXTA, SÁBADO E DOMINGO!'. Excelente para queimas de fim de semana.",
+        "badge": "URGÊNCIA / FIM DE SEMANA",
+        "default_sectors": ["Cervejas & Bebidas", "Carnes para o FDS", "Mercearia"],
+        "max_products": 12,
+        "primary_color": "#0D47A1",
+        "secondary_color": "#FFEB3B"
+    },
+    {
+        "id": "campanha-operacao-combate",
+        "name": "🚨 Operação Preço Baixo / Derruba Preços",
+        "category": "Campanhas de Impacto",
+        "format": "A4 / Tabloide",
+        "aspect_ratio": "210x297",
+        "description": "Estilo agressivo com faixas zebradas de perigo, carimbos 'BAIXOU!' e 'DIRETO DA INDÚSTRIA'. Destaque gigante para preços de fardo.",
+        "badge": "COMBATE À INFLAÇÃO",
+        "default_sectors": ["Alimentos Básicos", "Limpeza Industrial", "Bebidas"],
+        "max_products": 12,
+        "primary_color": "#C62828",
+        "secondary_color": "#FDD835"
+    },
+    {
         "id": "atacarejo-a4",
         "name": "Atacarejo Tradicional (A4 / Tabloide)",
         "category": "Impressão e Tabloide",
@@ -139,4 +191,3 @@ TEMPLATES_CATALOG: List[Dict[str, Any]] = [
 @router.get("/")
 def list_templates():
     return TEMPLATES_CATALOG
-
